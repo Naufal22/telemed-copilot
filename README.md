@@ -57,11 +57,14 @@ LLM bisa salah atau “ngarang” dosis/peringatan. Dengan RAG, sistem mengambil
 
 ---
 
-## 📸 Demo & Tampilan Aplikasi (Opsional)
-Tambahkan screenshot setelah jadi (placeholder):
-- `assets/analysis-result-summary.png`
-- `assets/analysis-result-risk&missing.png`
-- `assets/analysis-result-drugs.png`
+## 📸 Demo & Tampilan Aplikasi
+
+Berikut adalah hasil analisis AI terhadap kasus simulasi pasien dengan keluhan jantung (CASE001).
+
+| **1. Ringkasan Klinis** | **2. Deteksi Risiko & Info Kurang** | **3. Detail Obat & Warning** |
+|:---:|:---:|:---:|
+| ![Summary](assets/analysis-result-summary.png) | ![Risks](assets/analysis-result-risk-missing.png) | ![Drugs](assets/analysis-result-drugs.png) |
+| *AI mengekstrak keluhan utama, gejala, dan riwayat medis secara otomatis.* | *AI mendeteksi "Red Flags" (Interaksi Obat Berbahaya) dan info yang lupa ditanyakan.* | *AI menampilkan data dosis dan peringatan resmi (FDA) untuk obat yang disebut.* |
 
 ---
 
