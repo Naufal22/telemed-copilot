@@ -204,21 +204,6 @@ Buka di browser: `http://localhost:8501`
 
 ---
 
-## 🔒 Safety Notes (Wajib untuk Health)
-- Output tidak boleh diagnosis atau terapi.
-- `red_flags_mentioned_in_text` harus berbasis teks yang disebut (bukan asumsi).
-- Jika label obat tidak ditemukan → tampilkan “Not Found” (jangan mengarang).
-
----
-
-## 🗺️ Roadmap (Upgrade Setelah Versi 1 Hari Jadi)
-- Retrieval lebih canggih: TF‑IDF/embeddings untuk memilih potongan label paling relevan (lebih hemat token)
-- Bilingual output (EN → ID) sebagai opsi
-- Validasi schema JSON (pydantic/jsonschema) agar output selalu konsisten
-- Logging & monitoring untuk evaluasi kualitas output LLM
-
----
-
 ## 👤 Kontak
 **Muhammad Naufal Aqil**  
 WhatsApp: **+62 859 7488 7883**  
