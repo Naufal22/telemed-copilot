@@ -2,7 +2,7 @@
 
 **Telemed Copilot** adalah aplikasi demo telehealth yang membantu:
 1) Mengubah **transkrip percakapan dokter–pasien** menjadi **catatan medis terstruktur (JSON / SOAP-lite)** secara otomatis, dan  
-2) (Opsional) Menampilkan **referensi label obat** berbasis **RAG (Retrieval‑Augmented Generation)** dari **openFDA/DailyMed** agar output lebih *grounded* (tidak ngarang).
+2) Menampilkan **referensi label obat** berbasis **RAG (Retrieval‑Augmented Generation)** dari **openFDA/DailyMed** agar output lebih *grounded* (tidak ngarang).
 
 > ⚠️ **Disclaimer (Penting)**  
 > Proyek ini **bukan alat diagnosis**, **bukan pengganti dokter**, dan **tidak memberikan saran terapi**. Output hanya untuk **bantuan dokumentasi** dan **referensi label obat**. Keputusan klinis tetap pada tenaga kesehatan.
@@ -31,9 +31,9 @@ LLM bisa salah atau “ngarang” dosis/peringatan. Dengan RAG, sistem mengambil
   - `medications_mentioned`
   - `red_flags_mentioned_in_text` *(berdasarkan teks, bukan diagnosis)*
   - `missing_info` *(checklist info yang belum ada di transcript)*
-- **Drug Label Reference (RAG) — opsional**:
+- **Drug Label Reference (RAG)**:
   - `dosage_and_administration`, `warnings`, `contraindications`, `drug_interactions`
-  - tombol opsional untuk merangkum label agar lebih “human‑friendly”
+
 
 ---
 
@@ -49,7 +49,7 @@ LLM bisa salah atau “ngarang” dosis/peringatan. Dengan RAG, sistem mengambil
 
 4) **Hemat Kuota & Token**  
    - **LLM Call #1 (wajib):** Generate note JSON dari **1 transcript (1 sesi)**  
-   - **LLM Call #2 (opsional):** Ringkas label obat **hanya jika user klik**, biasanya **1 obat saja**  
+   - **LLM Call #2 :** Ringkas label obat **hanya jika user klik**, biasanya **1 obat saja**  
    - **Caching** hasil agar testing tidak boros.
 
 5) **UI Interaktif (Streamlit)**  
@@ -78,7 +78,7 @@ Berikut adalah hasil analisis AI terhadap kasus simulasi pasien dengan keluhan j
 1. Dari JSON note, baca `medications_mentioned`  
 2. Lookup obat di **Knowledge Base lokal**: `drug_kb.jsonl`  
 3. Tampilkan potongan label (dosage/warnings/contra/interactions)  
-4. (Opsional) klik “Summarize Medication” → ringkasan bullet + tetap menampilkan sumber potongan label
+4. klik “Summarize Medication” → ringkasan bullet + tetap menampilkan sumber potongan label
 
 > Penting: **LLM tidak membaca seluruh dataset percakapan** dan **tidak membaca ZIP openFDA besar**.  
 > Dataset besar diproses offline oleh Python. LLM hanya menerima **1 transcript** dan/atau **potongan label relevan**.
@@ -107,7 +107,7 @@ Label obat resmi dari openFDA/DailyMed. Untuk efisiensi demo, proyek memakai **s
 
 ---
 
-## 📁 Struktur Folder (Saran)
+## 📁 Struktur Folder
 ```
 telemed-copilot/
   app.py                      # Streamlit app (versi paling simpel)
@@ -117,8 +117,8 @@ telemed-copilot/
     drug_kb.jsonl             # hasil ekstraksi openFDA (subset)
   cache/
     note_cache.json           # cache hasil LLM call #1
-    medsum_cache.json         # cache hasil LLM call #2 (opsional)
-  assets/                     # screenshot demo (opsional)
+    medsum_cache.json         # cache hasil LLM call #2
+  assets/                     # screenshot demo
   requirements.txt
   .env.example
   README.md
@@ -199,7 +199,7 @@ Buka di browser: `http://localhost:8501`
 1) Pilih satu `ID` percakapan (mis. `RES0001`) → lihat transcript  
 2) Klik **Generate Note** → tampil JSON note + meds  
 3) Jika meds terdeteksi → tampil potongan label (dosage/warnings/contra/interactions)  
-4) (Opsional) klik **Summarize Medication** → ringkasan bullet + tetap tampilkan sumber potongan label  
+4) klik **Summarize Medication** → ringkasan bullet + tetap tampilkan sumber potongan label  
 5) Ganti `ID` lain untuk menunjukkan generalisasi
 
 ---
